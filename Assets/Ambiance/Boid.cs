@@ -45,10 +45,10 @@ public class Boid : MonoBehaviour
         Coherence();
         Separation();
         Alignment();
+        LimitSpeed();
         StayInBounds();
         _trigger.radius = _boidSystem.VisualRange / transform.localScale.x / 2;
-        _direction = _direction.normalized;
-        _rb.velocity = _direction * _boidSystem.Speed;
+        _rb.velocity = _direction;
         transform.forward = _direction;
     }
 
@@ -131,6 +131,15 @@ public class Boid : MonoBehaviour
         else if (transform.position.z > _boidSystem.MinMaxCoords.z)
         {
             _direction.z = -1;
+        }
+    }
+
+    private void LimitSpeed()
+    {
+        var speed = _direction.magnitude;
+        if (speed > _boidSystem.MaxSpeed)
+        {
+            _direction = _direction.normalized * _boidSystem.MaxSpeed;
         }
     }
 

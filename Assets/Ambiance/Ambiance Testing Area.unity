@@ -172,9 +172,9 @@ MonoBehaviour:
   avoidanceFactor: 0.15
   alignmentFactor: 0.02
   visualRange: 2
-  speed: 2
+  maxSpeed: 2
   boidPrefab: {fileID: 6700227895783786118, guid: 180819698515e6b468e9cdba280c7fc4, type: 3}
-  boidAmount: 100
+  boidAmount: 25
   spawnPosition: {x: 0, y: 0, z: 0}
   minMaxCoords: {x: 3, y: 3, z: 3}
 --- !u!1 &707930315

@@ -15,7 +15,7 @@ public class BoidSystem : MonoBehaviour
     [SerializeField] private float avoidanceFactor;
     [SerializeField] private float alignmentFactor;
     [SerializeField] private float visualRange;
-    [SerializeField] private float speed;
+    [FormerlySerializedAs("speed")] [SerializeField] private float maxSpeed;
 
     [Header("Other Settings")] 
     [SerializeField] private GameObject boidPrefab;
@@ -29,7 +29,7 @@ public class BoidSystem : MonoBehaviour
     public float AvoidanceFactor => avoidanceFactor;
     public float AlignmentFactor => alignmentFactor;
     public float VisualRange => visualRange;
-    public float Speed => speed;
+    public float MaxSpeed => maxSpeed;
     
     // Properties for other settings
     public Vector3 MinMaxCoords => minMaxCoords;
