@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 3617334835867481214}
   - component: {fileID: 6700227895783786113}
   - component: {fileID: -7297859974418355380}
+  - component: {fileID: 5062116660471634193}
   - component: {fileID: 9062110837140098114}
   m_Layer: 9
-  m_Name: Boid
+  m_Name: Firefly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -146,6 +147,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 241bb058fdf41e843b43f52b20ffd092, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5062116660471634193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6700227895783786118}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f5391c2f121c8149a60c132d2e4f308, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFadeTime: 10
+  minFadeTime: 5
 --- !u!95 &9062110837140098114
 Animator:
   serializedVersion: 5

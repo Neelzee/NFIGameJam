@@ -18,9 +18,6 @@ public class Boid : MonoBehaviour
     private Vector3 _direction;
 
     private List<Transform> _neighbours = new List<Transform>();
-
-    private float _animationOffset;
-    private Animator _animator;
     
     // Start is called before the first frame update
     void Start()
@@ -40,13 +37,6 @@ public class Boid : MonoBehaviour
             Random.Range(-1f, 1f)
         );
         _direction = _direction.normalized;
-
-        // TODO: Make fading random for each loop not just the first one.
-        _animator = GetComponent<Animator>();
-        _animator.enabled = false;
-
-        _animationOffset = Random.Range(0f, 1f);
-        StartCoroutine(StartAnimation());
     }
 
     // Update is called once per frame
@@ -59,7 +49,6 @@ public class Boid : MonoBehaviour
         StayInBounds();
         _trigger.radius = _boidSystem.VisualRange / transform.localScale.x / 2;
         _rb.velocity = _direction;
-        transform.forward = _direction;
     }
 
     /// <summary>
@@ -87,9 +76,9 @@ public class Boid : MonoBehaviour
         foreach (var boid in _neighbours)
         {
             var distance = Vector3.Distance(transform.position, boid.transform.position);
-            if (distance < _boidSystem.MinDistance)
+            if (distance < _boidSystem.MinDistance && distance > 0)
             {
-                separation += transform.position - boid.transform.position;
+                separation += (transform.position - boid.transform.position).normalized / distance;
             }
         }
         _direction += separation * _boidSystem.AvoidanceFactor;
@@ -104,7 +93,8 @@ public class Boid : MonoBehaviour
         var alignment = Vector3.zero;
         foreach (var boid in _neighbours)
         {
-            alignment += boid.transform.forward;
+            // TODO: Slow
+            alignment += boid.GetComponent<Rigidbody>().velocity;
         }
         alignment /= _neighbours.Count;
         _direction += alignment * _boidSystem.AlignmentFactor;
@@ -151,12 +141,6 @@ public class Boid : MonoBehaviour
         {
             _direction = _direction.normalized * _boidSystem.MaxSpeed;
         }
-    }
-
-    private IEnumerator StartAnimation()
-    {
-        yield return new WaitForSeconds(_animationOffset);
-        _animator.enabled = true;
     }
 
     // Adds and removes boids from the neighbours list when they enter or leave the trigger.

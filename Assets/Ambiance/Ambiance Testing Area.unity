@@ -167,9 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345f73173e9ff154486f1ea9fc5aca06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coherenceFactor: 0.1
-  minDistance: 0.75
-  avoidanceFactor: 0.15
+  coherenceFactor: 0.5
+  minDistance: 2
+  avoidanceFactor: 0.05
   alignmentFactor: 0.02
   visualRange: 2
   maxSpeed: 2
