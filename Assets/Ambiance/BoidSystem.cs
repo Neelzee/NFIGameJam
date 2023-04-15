@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,7 +22,7 @@ public class BoidSystem : MonoBehaviour
     [SerializeField] private GameObject boidPrefab;
     [SerializeField] private float boidAmount;
     [SerializeField] private Vector3 spawnPosition;
-    [SerializeField] private Vector3 minMaxCoords;
+    [SerializeField] private Vector3 bounds;
 
     // Properties for behaviour settings
     public float CoherenceFactor => coherenceFactor;
@@ -32,7 +33,7 @@ public class BoidSystem : MonoBehaviour
     public float MaxSpeed => maxSpeed;
     
     // Properties for other settings
-    public Vector3 MinMaxCoords => minMaxCoords;
+    public Vector3 Bounds => bounds;
 
     // Start is called before the first frame update
     void Start()
@@ -42,5 +43,11 @@ public class BoidSystem : MonoBehaviour
             var boid = Instantiate(boidPrefab, transform);
             boid.transform.position = spawnPosition;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(transform.position, bounds);
     }
 }

@@ -159,8 +159,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f5391c2f121c8149a60c132d2e4f308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxFadeTime: 10
-  minFadeTime: 5
+  maxFadeTime: 5
+  minFadeTime: 2
 --- !u!95 &9062110837140098114
 Animator:
   serializedVersion: 5

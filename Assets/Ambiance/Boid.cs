@@ -113,29 +113,29 @@ public class Boid : MonoBehaviour
     /// </summary>
     private void StayInBounds()
     {
-        if (transform.position.x < -_boidSystem.MinMaxCoords.x)
+        if (transform.position.x < -_boidSystem.Bounds.x / 2)
         {
             _direction.x = 1;
         }
-        else if (transform.position.x > _boidSystem.MinMaxCoords.x)
+        else if (transform.position.x > _boidSystem.Bounds.x / 2)
         {
             _direction.x = -1;
         }
         
-        if (transform.position.y < -_boidSystem.MinMaxCoords.y)
+        if (transform.position.y < -_boidSystem.Bounds.y / 2)
         {
             _direction.y = 1;
         }
-        else if (transform.position.y > _boidSystem.MinMaxCoords.y)
+        else if (transform.position.y > _boidSystem.Bounds.y / 2)
         {
             _direction.y = -1;
         }
         
-        if (transform.position.z < -_boidSystem.MinMaxCoords.z)
+        if (transform.position.z < -_boidSystem.Bounds.y / 2)
         {
             _direction.z = 1;
         }
-        else if (transform.position.z > _boidSystem.MinMaxCoords.z)
+        else if (transform.position.z > _boidSystem.Bounds.y / 2)
         {
             _direction.z = -1;
         }
