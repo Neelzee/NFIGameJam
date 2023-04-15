@@ -114,30 +114,31 @@ public class Boid : MonoBehaviour
     private void StayInBounds()
     {
         var bounds = _boidSystem.Bounds;
+        var center = _boidSystem.Center;
         var position = transform.position;
         var newDirection = Vector3.zero;
         
-        if (position.x < -bounds.x / 2)
+        if (position.x < center.x - bounds.x / 2)
         {
             newDirection.x += Mathf.Abs(_direction.x);
         }
-        else if (position.x > bounds.x / 2)
+        else if (position.x > center.x + bounds.x / 2)
         {
             newDirection.x += -Mathf.Abs(_direction.x);
         }
-        if (position.y < -bounds.y / 2)
+        if (position.y < center.y - bounds.y / 2)
         {
             newDirection.y += Mathf.Abs(_direction.y);
         }
-        else if (position.y > bounds.y / 2)
+        else if (position.y > center.y + bounds.y / 2)
         {
             newDirection.y += -Mathf.Abs(_direction.y);
         }
-        if (position.z < -bounds.z / 2)
+        if (position.z < center.z - bounds.z / 2)
         {
             newDirection.z += Mathf.Abs(_direction.z);
         }
-        else if (position.z > bounds.z / 2)
+        else if (position.z > center.z + bounds.z / 2)
         {
             newDirection.z += -Mathf.Abs(_direction.z);
         }

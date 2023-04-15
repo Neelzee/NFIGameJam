@@ -22,8 +22,8 @@ public class BoidSystem : MonoBehaviour
     [Header("Other Settings")] 
     [SerializeField] private GameObject boidPrefab;
     [SerializeField] private float boidAmount;
-    [SerializeField] private Vector3 spawnPosition;
     [SerializeField] private Vector3 bounds;
+    private Vector3 _center;
 
     // Properties for behaviour settings
     public float CoherenceFactor => coherenceFactor;
@@ -36,14 +36,17 @@ public class BoidSystem : MonoBehaviour
     
     // Properties for other settings
     public Vector3 Bounds => bounds;
+    public Vector3 Center => _center;
 
     // Start is called before the first frame update
     void Start()
     {
+        _center = transform.position;
+        
         for (int i = 0; i < boidAmount; i++)
         {
             var boid = Instantiate(boidPrefab, transform);
-            boid.transform.position = spawnPosition;
+            boid.transform.position = _center;
         }
     }
 
