@@ -167,7 +167,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 345f73173e9ff154486f1ea9fc5aca06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coherenceFactor: 0.1
+  coherenceFactor: 0.15
   minDistance: 2
   avoidanceFactor: 0.05
   alignmentFactor: 0.01
@@ -175,7 +175,7 @@ MonoBehaviour:
   visualRange: 2
   maxSpeed: 1
   boidPrefab: {fileID: 6700227895783786118, guid: 180819698515e6b468e9cdba280c7fc4, type: 3}
-  boidAmount: 25
+  boidAmount: 100
   bounds: {x: 10, y: 2, z: 10}
 --- !u!1 &707930315
 GameObject:

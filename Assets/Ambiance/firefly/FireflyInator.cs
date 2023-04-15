@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// Class for controlling firefly specific behaviour.
 /// </summary>
-public class FireflyController : MonoBehaviour
+public class FireflyInator : MonoBehaviour
 {
     private Animator _animator;
 
