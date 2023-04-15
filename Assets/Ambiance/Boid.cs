@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 /// Simulates a single boid for the boid algorithm. Uses settings from a BoidParent class with settings for
 /// Coherence, Separation, Alignment, and Visual Range
 /// </summary>
+[RequireComponent(typeof(Rigidbody))]
 public class Boid : MonoBehaviour
 {
     private BoidSystem _boidSystem;
@@ -17,7 +18,7 @@ public class Boid : MonoBehaviour
     private Rigidbody _rb;
     private Vector3 _direction;
 
-    private List<Transform> _neighbours = new List<Transform>();
+    private List<Rigidbody> _neighbours = new List<Rigidbody>();
     
     // Start is called before the first frame update
     void Start()
@@ -100,7 +101,7 @@ public class Boid : MonoBehaviour
         foreach (var boid in _neighbours)
         {
             // TODO: Slow
-            alignment += boid.GetComponent<Rigidbody>().velocity;
+            alignment += boid.velocity;
         }
         alignment /= _neighbours.Count;
         _direction += alignment * _boidSystem.AlignmentFactor;
@@ -154,14 +155,14 @@ public class Boid : MonoBehaviour
     {
         if (other.transform.parent == transform.parent)
         {
-            _neighbours.Add(other.transform);
+            _neighbours.Add(other.GetComponent<Rigidbody>());
         }
     }
     private  void OnTriggerExit(Collider other)
     {
         if (other.transform.parent == transform.parent)
         {
-            _neighbours.Remove(other.transform);
+            _neighbours.Remove(other.GetComponent<Rigidbody>());
         }
     }
 }
