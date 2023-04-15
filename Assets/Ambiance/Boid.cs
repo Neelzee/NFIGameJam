@@ -18,6 +18,9 @@ public class Boid : MonoBehaviour
     private Vector3 _direction;
 
     private List<Transform> _neighbours = new List<Transform>();
+
+    private float _animationOffset;
+    private Animator _animator;
     
     // Start is called before the first frame update
     void Start()
@@ -37,6 +40,13 @@ public class Boid : MonoBehaviour
             Random.Range(-1f, 1f)
         );
         _direction = _direction.normalized;
+
+        // TODO: Make fading random for each loop not just the first one.
+        _animator = GetComponent<Animator>();
+        _animator.enabled = false;
+
+        _animationOffset = Random.Range(0f, 1f);
+        StartCoroutine(StartAnimation());
     }
 
     // Update is called once per frame
@@ -141,6 +151,12 @@ public class Boid : MonoBehaviour
         {
             _direction = _direction.normalized * _boidSystem.MaxSpeed;
         }
+    }
+
+    private IEnumerator StartAnimation()
+    {
+        yield return new WaitForSeconds(_animationOffset);
+        _animator.enabled = true;
     }
 
     // Adds and removes boids from the neighbours list when they enter or leave the trigger.
