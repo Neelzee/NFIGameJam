@@ -15,6 +15,7 @@ public class BoidSystem : MonoBehaviour
     [SerializeField] [Range(0f, 10f)] private float minDistance;
     [SerializeField] [Range(0f, 2f)] private float avoidanceFactor;
     [SerializeField] [Range(0f, 2f)] private float alignmentFactor;
+    [SerializeField] [Range(0f, 2f)] private float stayInBoundsFactor;
     [SerializeField] [Range(0f, 10f)] private float visualRange;
     [SerializeField] [Range(0f, 10f)] private float maxSpeed;
 
@@ -29,6 +30,7 @@ public class BoidSystem : MonoBehaviour
     public float MinDistance => minDistance;
     public float AvoidanceFactor => avoidanceFactor;
     public float AlignmentFactor => alignmentFactor;
+    public float StayInBoundsFactor => stayInBoundsFactor;
     public float VisualRange => visualRange;
     public float MaxSpeed => maxSpeed;
     

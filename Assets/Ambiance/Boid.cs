@@ -109,36 +109,39 @@ public class Boid : MonoBehaviour
 
     /// <summary>
     /// Makes sure the boid stays within the bounds of the BoidParent. If the boid is outside the bounds, it will
-    /// turn around and head back in. Mainly used for debugging.
+    /// turn around and head back in.
     /// </summary>
     private void StayInBounds()
     {
-        if (transform.position.x < -_boidSystem.Bounds.x / 2)
-        {
-            _direction.x = 1;
-        }
-        else if (transform.position.x > _boidSystem.Bounds.x / 2)
-        {
-            _direction.x = -1;
-        }
+        var bounds = _boidSystem.Bounds;
+        var position = transform.position;
+        var newDirection = Vector3.zero;
         
-        if (transform.position.y < -_boidSystem.Bounds.y / 2)
+        if (position.x < -bounds.x / 2)
         {
-            _direction.y = 1;
+            newDirection.x += Mathf.Abs(_direction.x);
         }
-        else if (transform.position.y > _boidSystem.Bounds.y / 2)
+        else if (position.x > bounds.x / 2)
         {
-            _direction.y = -1;
+            newDirection.x += -Mathf.Abs(_direction.x);
         }
-        
-        if (transform.position.z < -_boidSystem.Bounds.y / 2)
+        if (position.y < -bounds.y / 2)
         {
-            _direction.z = 1;
+            newDirection.y += Mathf.Abs(_direction.y);
         }
-        else if (transform.position.z > _boidSystem.Bounds.y / 2)
+        else if (position.y > bounds.y / 2)
         {
-            _direction.z = -1;
+            newDirection.y += -Mathf.Abs(_direction.y);
         }
+        if (position.z < -bounds.z / 2)
+        {
+            newDirection.z += Mathf.Abs(_direction.z);
+        }
+        else if (position.z > bounds.z / 2)
+        {
+            newDirection.z += -Mathf.Abs(_direction.z);
+        }
+        _direction += newDirection * _boidSystem.StayInBoundsFactor;
     }
 
     private void LimitSpeed()

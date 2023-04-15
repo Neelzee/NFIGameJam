@@ -171,6 +171,7 @@ MonoBehaviour:
   minDistance: 2
   avoidanceFactor: 0.05
   alignmentFactor: 0.02
+  stayInBoundsFactor: 2
   visualRange: 2
   maxSpeed: 2
   boidPrefab: {fileID: 6700227895783786118, guid: 180819698515e6b468e9cdba280c7fc4, type: 3}
