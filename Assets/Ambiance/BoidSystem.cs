@@ -10,12 +10,12 @@ using UnityEngine.Serialization;
 public class BoidSystem : MonoBehaviour
 {
     [Header("Behaviour Settings")]
-    [SerializeField] private float coherenceFactor;
-    [FormerlySerializedAs("maxSeparation")] [SerializeField] private float minDistance;
-    [SerializeField] private float avoidanceFactor;
-    [SerializeField] private float alignmentFactor;
-    [SerializeField] private float visualRange;
-    [FormerlySerializedAs("speed")] [SerializeField] private float maxSpeed;
+    [SerializeField][Range(0f, 2f)] private float coherenceFactor;
+    [SerializeField] [Range(0f, 10f)] private float minDistance;
+    [SerializeField] [Range(0f, 2f)] private float avoidanceFactor;
+    [SerializeField] [Range(0f, 2f)] private float alignmentFactor;
+    [SerializeField] [Range(0f, 10f)] private float visualRange;
+    [SerializeField] [Range(0f, 10f)] private float maxSpeed;
 
     [Header("Other Settings")] 
     [SerializeField] private GameObject boidPrefab;

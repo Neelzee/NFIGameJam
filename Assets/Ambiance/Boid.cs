@@ -57,7 +57,10 @@ public class Boid : MonoBehaviour
     /// </summary>
     private void Coherence()
     {
+        if (_neighbours.Count == 0) return;
+        
         var center = Vector3.zero;
+
         foreach (var boid in _neighbours)
         {
             center += boid.transform.position;
@@ -90,7 +93,10 @@ public class Boid : MonoBehaviour
     /// </summary>
     private void Alignment()
     {
+        if (_neighbours.Count == 0) return;
+        
         var alignment = Vector3.zero;
+        
         foreach (var boid in _neighbours)
         {
             // TODO: Slow
